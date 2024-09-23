@@ -26,7 +26,7 @@ export default function Flashcard({flashcard}: Flashcard) {
     setScore(prevScore => prevScore - 1)
     flashcard.score--
     setButtonClicked(true)
-  }
+  } 
 
   return (
     <div className='container'>
@@ -39,7 +39,7 @@ export default function Flashcard({flashcard}: Flashcard) {
         </div>
         <div className="back">
           {flashcard.back} <br/>
-          Score: {flashcard.score} <br/>
+          Score: {score} <br/>
         </div>
       </div>
       {!buttonClicked && flip && (

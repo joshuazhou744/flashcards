@@ -20,6 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: relative;
     border-radius: .25rem;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
@@ -28,8 +29,8 @@ body {
     transition: 150ms;
     cursor: pointer;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0));
-    height: 150px;
-    width: 250px;
+    height: 350px;
+    width: 550px;
     transform: rotateY(var(--rotate-y, 0))
 }
 
@@ -60,6 +61,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .right-btn {

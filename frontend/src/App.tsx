@@ -1,30 +1,18 @@
-import { useState } from "react"
-import FlashcardList from "./components/FlashcardList"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import Decklist from "./components/Decklist"
+import DeckPage from "./components/DeckPage"
 
 function App() {
 
-  const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
 
   return (
-    <>
-      <FlashcardList flashcards={flashcards}/>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Decklist />}/>
+        <Route path="/deck/:deckId" element={<DeckPage />} />
+      </Routes>
+    </Router>
   )
 }
-
-const SAMPLE_FLASHCARDS = [
-  {
-    id: 1,
-    front: "front1",
-    back: "back1",
-    score: 0
-  },
-  {
-    id: 2,
-    front: "front2",
-    back: "back2",
-    score: 0
-  }
-]
 
 export default App
