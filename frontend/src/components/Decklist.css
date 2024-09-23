@@ -10,11 +10,12 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.container {
+.decks-container {
     display: grid;
     gap: 20px;
     padding: 20px;
     justify-content: center;
+    grid-template-columns: auto auto auto;
   }
 
 .card {

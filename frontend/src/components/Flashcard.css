@@ -7,7 +7,7 @@ body {
     margin: 0;
 }
 
-.container {
+.flashcard-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +15,7 @@ body {
     gap: 1rem
 }
 
-.card {
+.flashcard {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,22 +34,22 @@ body {
     transform: rotateY(var(--rotate-y, 0))
 }
 
-.card.flip {
+.flashcard.flip {
     --rotate-y: 180deg;
 }
 
-.card .front,
-.card .back {
+.flashcard .front,
+.flashcard .back {
     position: absolute;
     padding: 1rem;
     backface-visibility: hidden;
 }
 
-.card .back {
+.flashcard .back {
     transform: rotateY(180deg);
 }
 
-.buttons {
+.flashcard-buttons {
     display: flex;
     gap: 1rem;
 }

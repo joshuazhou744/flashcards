@@ -25,11 +25,8 @@ export default function FlashcardList({ flashcards }: FlashcardListProps) {
 
   return (
     <div className="flashcard-container">
-      <div className="flashcard">
         <Flashcard flashcard={flashcards[current]} key={flashcards[current].id} />
-      </div>
       <button className="nextbutton" onClick={nextCard}>Next Flashcard</button>
-      
     </div>
   )
 }

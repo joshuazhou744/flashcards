@@ -7,35 +7,22 @@ const url = "http://localhost:8000/api"
 
 export default function Decklist() {
 
-  const [decks, setDecks] = useState<{id: number, name: string }[]>([])
-  const [gridColumns, setGridColumns] = useState(1)
+  const [decks, setDecks] = useState<[]>([])
 
   useEffect(() => {
     axios.get(`${url}/get_decks`)
     .then(res => {
       setDecks(res.data.decks)
-      calculateGrid(res.data.decks.length)
     })
-  }, [])
-
-  const calculateGrid = (length: number) => {
-    const sqrt = Math.sqrt(length)
-    let rows = Math.floor(sqrt)
-    let columns = Math.ceil(sqrt)
-
-    if (rows*columns < length) {
-      rows += 1
-    }
-    setGridColumns(columns)
-  }
+  }, [decks])
 
   return (
     <div className="main">
       <h2 className="title">Decks</h2>
-      <div className="container" style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}>
-        {decks.map((deck) => (
-            <Link className="card" to={`/deck/${deck.id}`} key={deck.id}>
-              <div>{deck.name}</div>
+      <div className="decks-container">
+        {decks.length > 0 && decks.map((deck) => (
+            <Link className="card" to={`/deck/${deck}`} key={deck}>
+              <div>{deck}</div>
             </Link>
         ))}
       </div>

@@ -29,9 +29,9 @@ export default function Flashcard({flashcard}: Flashcard) {
   } 
 
   return (
-    <div className='container'>
+    <div className='flashcard-container'>
       <div
-      className={`card ${flip ? 'flip' : ''}`}
+      className={`flashcard ${flip ? 'flip' : ''}`}
       onClick={() => setFlip(!flip)}
       >
         <div className="front">
@@ -43,7 +43,7 @@ export default function Flashcard({flashcard}: Flashcard) {
         </div>
       </div>
       {!buttonClicked && flip && (
-        <div className="buttons">
+        <div className="flashcard-buttons">
           <button onClick={handleRightClick} className="right-btn">Right</button>
           <button onClick={handleWrongClick} className="wrong-btn">Wrong</button>
         </div>
