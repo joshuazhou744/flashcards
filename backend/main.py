@@ -81,3 +81,12 @@ async def add_card(deck_name: str, card: Flashcard):
 
 
 # PUT REQUESTS
+
+@app.put("/api/deck/update_score/{deck_name}/{card_id}/{new_score}")
+async def update_score(deck_name: str, card_id: int, new_score: int):
+    deck = get_deck(deck_name)
+    result = await deck.update_one({"id": card_id}, {"$set": {"score": new_score}})
+    print("updated %s document" % result.modified_count)
+    new = await deck.find_one({"id": card_id})
+    print("document is now %s" % pprint.pformat(new))
+    return {"message": "Changed score"}
