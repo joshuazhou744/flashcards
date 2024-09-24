@@ -1,8 +1,11 @@
 body {
     background-color: lightslategray;
     display: flex;
-    height: 100vh;
+    height: 100%;
     margin: 0;
+}
+.main {
+    position: relative;
 }
 
 .title {
@@ -11,11 +14,15 @@ body {
 }
 
 .decks-container {
+    background-color: wheat;
     display: grid;
     gap: 20px;
     padding: 20px;
     justify-content: center;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+    width: 100%;
   }
 
 .card {
@@ -32,4 +39,31 @@ body {
     width: 200px;
     text-decoration: none;
     color: black;
+}
+
+.create-deck {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+
+.create-deck input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.create-deck button {
+    background-color: aqua;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.create-deck button:hover {
+    background-color: aquamarine;
 }
