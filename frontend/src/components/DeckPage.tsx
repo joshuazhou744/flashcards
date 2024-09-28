@@ -11,7 +11,7 @@ export default function DeckPage() {
 
   const {deckName} = useParams<{deckName: string}>()
   const [deck, setDeck] = useState<{id:number, front: string, back:string, score:number}[]>([])
-  
+
   useEffect(() => {
     axios.get(`${url}/deck/get_deck/${deckName}`)
     .then(res => {
@@ -21,11 +21,19 @@ export default function DeckPage() {
 
   return (
     <div className="deck-main">
-      {deck.length > 0 ? (
-        <FlashcardList flashcards={deck}/>
-      ) : (
-        <p>Loading deck...</p>
-      )}
+      <h1>{deckName}</h1>
+      <button className="practice-deck">
+          Practice
+        </button>
+      <div className="deck-options">
+        <button className="delete-deck" >
+          Delete Deck
+        </button>
+
+        <button className="view-cards">
+          View Cards
+        </button>
+      </div>
     </div>
   )
 }

@@ -36,28 +36,34 @@ export default function Decklist() {
 
   return (
     <div className="main">
-      <h1 className="title">Decks</h1>
-      <div className="create-deck">
-        <input 
-          type="text"
-          value={newDeck}
-          onChange={(e) => {
-            setNewDeck(e.target.value)
-            if (e.target.value.trim() !== "") {
-              setInvalid(false)
-            }
-          }}
-          placeholder="New Deck Name"
-        />
-        <button onClick={handleCreate} disabled={invalid || newDeck.trim() === ""}>Create Deck</button>
+      <div className="header">
+        <h1 className="title">Decks</h1>
+        <div className="create-deck">
+          <input 
+            type="text"
+            value={newDeck}
+            onChange={(e) => {
+              setNewDeck(e.target.value)
+              if (e.target.value.trim() !== "") {
+                setInvalid(false)
+              }
+            }}
+            placeholder="New Deck Name"
+          />
+          <button onClick={handleCreate} disabled={invalid || newDeck.trim() === ""}>+</button>
+        </div>
       </div>
 
       <div className="decks-container">
-        {decks.length > 0 && decks.map((deck) => (
+        {decks.length > 0 ? (
+          decks.map((deck) => (
             <Link className="card" to={`/deck/${deck}`} key={deck}>
               <div>{deck}</div>
             </Link>
-        ))}
+        ))
+      ) : (
+        <p>No deck available, please create one</p>
+      )}
       </div>
     </div>
   )
