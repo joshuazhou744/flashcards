@@ -61,7 +61,7 @@ async def create_deck(deck_name: str):
     else:
         return {"message": f"Deck {deck_name} already exists"}
     
-@app.post("/api/delete_deck/{deck_name}")
+@app.delete("/api/delete_deck/{deck_name}")
 async def del_deck(deck_name: str):
     db = get_db()
     deck_list = await db.list_collection_names()

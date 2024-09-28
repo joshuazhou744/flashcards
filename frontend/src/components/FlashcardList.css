@@ -1,5 +1,5 @@
 
-.nextbutton {
+.next-button, .back-button {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
@@ -9,9 +9,17 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.back-button:hover, .next-button:hover {
+    background-color: aliceblue;
+}
+
 .flashcard-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

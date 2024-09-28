@@ -10,14 +10,19 @@ export default function Decklist() {
   const [decks, setDecks] = useState<[]>([])
   const [newDeck, setNewDeck] = useState<string>("")
   const [invalid, setInvalid] = useState<boolean>(false)
+  const [loading, setLoading] = useState(false)
+  const [reload, setReload] = useState(false)
 
   // fetch decks on start
   useEffect(() => {
+    setLoading(true)
     axios.get(`${url}/get_decks`)
     .then(res => {
       setDecks(res.data.decks)
+      setLoading(false)
     })
-  }, [newDeck])
+    .catch(() => setLoading(false))
+  }, [reload])
 
   const handleCreate = () => {
     if (newDeck.trim() !== "") {
@@ -25,6 +30,8 @@ export default function Decklist() {
         .then(res => {
           setNewDeck("")
           setInvalid(false)
+          console.log(res.data)
+          setReload(prev => !prev)
         })
         .catch(error => {
           console.error(error)
@@ -55,15 +62,17 @@ export default function Decklist() {
       </div>
 
       <div className="decks-container">
-        {decks.length > 0 ? (
+        {loading ? (
+          <p>Loading</p>
+        ): decks.length > 0 ? (
           decks.map((deck) => (
             <Link className="card" to={`/deck/${deck}`} key={deck}>
               <div>{deck}</div>
             </Link>
-        ))
-      ) : (
-        <p>No deck available, please create one</p>
-      )}
+          ))
+        ) : (
+          <p>No deck available, please create one</p>
+        )}
       </div>
     </div>
   )
