@@ -19,7 +19,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 40vh;
+    height: 50vh;
     border: outset, rgb(225, 43, 225), 5px;
 }
 
@@ -27,6 +27,7 @@ a {
     display: flex;
     gap: 10px;
     width: 90%;
+    margin-bottom: 10px;
 }
 
 .deck-main button:hover {

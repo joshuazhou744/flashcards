@@ -4,10 +4,18 @@ import axios from "axios"
 import "./DeckPage.css"
 
 
+interface Flashcard {
+  id: number;
+  front: string;
+  back: string;
+  score: number;
+}
+
 const url = "http://localhost:8000/api"
 
 export default function DeckPage() {
 
+  const [score, setScore] = useState<number>(-1);
   const {deckName} = useParams<{deckName: string}>()
   const navigate = useNavigate();
 
@@ -18,6 +26,25 @@ export default function DeckPage() {
         navigate("/")
       })
       .catch(err => console.error("There was an error", err))
+  }
+
+  useEffect(() => {
+    axios.get(`${url}/deck/get_deck/${deckName}`)
+    .then(res => {
+      let deck = res.data.deck
+      let deckScores = []
+      for (let i = 0; i < deck.length; i++) {
+        deckScores[i] = deck[i].score
+      }
+      setScore(parseFloat(calculatePercentageScore(deckScores).toFixed(0)))
+    })
+  }, [deckName])
+
+  function calculatePercentageScore(scores: number[]): number {
+    let maxScore = 50;
+    const normalizedScores = scores.map(score => (score + maxScore) / (2 * maxScore) * 100);
+    const totalPercentage = normalizedScores.reduce((acc, score) => acc + score, 0) / scores.length;
+    return totalPercentage;
   }
 
   return (
@@ -36,9 +63,16 @@ export default function DeckPage() {
             Delete Deck
           </button>
 
-          <button className="view-cards">
-            View Cards
-          </button>
+          <Link to={`/deck/${deckName}/cards`}>
+            <div className="practice-wrapper">
+              <button className="view-cards">
+                View Cards
+              </button>
+            </div>
+          </Link>
+        </div>
+        <div className="deckInfo">
+          Deck Score: {score}%
         </div>
       </div>
     </div>

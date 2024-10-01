@@ -78,6 +78,14 @@ async def add_card(deck_name: str, card: Flashcard):
     result = await deck.insert_one(document)
     return {"message": f"Added {card.front} to {deck_name}"}
 
+@app.post("/api/deck/add_many_cards/{deck_name}")
+async def add_many_cards(deck_name: str, cards: list[Flashcard]):
+    deck = get_deck(deck_name)
+    documents = [card.dict() for card in cards]
+    result = await deck.insert_many(documents)
+    print("inserted %d docs" % (len(result.inserted_ids),))
+    return {"message": f"Added {len(cards)} to {deck_name}"}
+
 
 
 # PUT REQUESTS
