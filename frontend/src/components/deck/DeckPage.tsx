@@ -3,14 +3,6 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import "./DeckPage.css"
 
-
-interface Flashcard {
-  id: number;
-  front: string;
-  back: string;
-  score: number;
-}
-
 const url = "http://localhost:8000/api"
 
 export default function DeckPage() {

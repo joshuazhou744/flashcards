@@ -61,16 +61,6 @@ async def create_deck(deck_name: str):
     else:
         return {"message": f"Deck {deck_name} already exists"}
     
-@app.delete("/api/delete_deck/{deck_name}")
-async def del_deck(deck_name: str):
-    db = get_db()
-    deck_list = await db.list_collection_names()
-    if deck_name in deck_list:
-        await db.drop_collection(deck_name)
-        return {"message": f"Deleted deck {deck_name}"}
-    else:
-        return {"message": f"Deck {deck_name} does not exist"}
-    
 @app.post("/api/deck/add_card/{deck_name}")
 async def add_card(deck_name: str, card: Flashcard):
     document = card.dict()
@@ -86,7 +76,28 @@ async def add_many_cards(deck_name: str, cards: list[Flashcard]):
     print("inserted %d docs" % (len(result.inserted_ids),))
     return {"message": f"Added {len(cards)} to {deck_name}"}
 
+# DELETE REQUESTS
 
+@app.delete("/api/delete_deck/{deck_name}")
+async def del_deck(deck_name: str):
+    db = get_db()
+    deck_list = await db.list_collection_names()
+    if deck_name in deck_list:
+        await db.drop_collection(deck_name)
+        return {"message": f"Deleted deck {deck_name}"}
+    else:
+        return {"message": f"Deck {deck_name} does not exist"}
+    
+@app.delete("/api/delete_card/{deck_name}/{card_id}")
+async def del_card(deck_name: str, card_id: int):
+    db = get_db()
+    coll = db[deck_name]
+    n = await coll.count_documents({})
+    print("%s documents before calling delete_one()" % n)
+    result = await coll.delete_one({"id": card_id})
+    print("%s documents after" % (n))
+    return str(result)
+    
 
 # PUT REQUESTS
 

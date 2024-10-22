@@ -64,13 +64,14 @@ body {
 
 .create-deck input {
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1.5px solid black;
 }
 
 .create-deck button {
-    background-color: aqua;
+    background-color: rgb(82, 246, 82);
     padding: 10px 20px;
     border-radius: 5px;
+    border: 1.5px solid black;
     font-size: 12px;
     cursor: pointer;
 }
@@ -81,4 +82,11 @@ body {
 
 p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }

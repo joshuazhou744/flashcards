@@ -1,3 +1,49 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.cards-container {
+    background-color: wheat;
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr); 
+    overflow-y: auto;
+    max-height: 75vh;
+    border: outset, rgb(225, 43, 225), 5px;
+}
+
+.list-flashcard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 22px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    background-color: white;
+    cursor: pointer;
+    height: 170px;
+    width: 250px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.delete-button {
+    padding: 7px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: red;
+}
+
+.delete-button:hover {
+    background-color: aliceblue;
+}
