@@ -1,39 +1,65 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Flashcard Page Container */
+.flashcard-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Main Container using Flexbox */
+.main-container {
+    display: flex;
+    gap: 20px;
+    width: 75vw;
+    margin-top: 20px;
+}
+
+/* Flashcards Container */
 .cards-container {
     background-color: wheat;
     display: grid;
     gap: 20px;
     padding: 20px;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(3, 1fr); /* 4-column grid */
     overflow-y: auto;
     max-height: 75vh;
-    border: outset, rgb(225, 43, 225), 5px;
+    border: 5px outset rgb(225, 43, 225);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 3; /* Takes up 3 parts of the flex container */
 }
 
+/* Individual Flashcard */
 .list-flashcard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    font-size: 22px;
+    font-size: 18px; /* Slightly reduced for better readability */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: .25rem;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
     background-color: white;
     cursor: pointer;
     height: 170px;
-    width: 250px;
+    width: 240px;
     text-decoration: none;
-    cursor: pointer;
     position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.list-flashcard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Delete Button */
 .delete-button {
     padding: 7px 10px;
     border-radius: 5px;
@@ -41,9 +67,68 @@ body {
     font-size: 12px;
     cursor: pointer;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: red;
+    background-color: #dc3545; /* Shade of red */
+    color: white; /* Better contrast */
+    border: none; /* Remove default border */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .delete-button:hover {
-    background-color: aliceblue;
+    background-color: #c82333;
+    color: #ffffff;
+}
+
+/* Flashcard Creation Form */
+.flashcard-form {
+    background-color: #fff; /* White background for the form */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Takes up 1 part of the flex container */
+    max-width: 300px; /* Fixed width for the form */
+    height: fit-content; /* Adjust height based on content */
+}
+
+.flashcard-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.flashcard-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.flashcard-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.flashcard-form input:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+.add-button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.add-button:hover {
+    background-color: #218838;
 }
