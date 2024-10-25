@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import './FlashcardPage.css'
@@ -25,8 +25,7 @@ export default function FlashcardPage() {
     setLoading(true)
     axios.get(`${url}/deck/get_deck/${deckName}`)
     .then(res => {
-      let resDeck = res.data.deck
-      console.log(resDeck)
+      const resDeck = res.data.deck
       setDeck(resDeck)
       const maxId = resDeck.reduce((max: number, card: Card) => {
         if (card.id > max) {
@@ -89,11 +88,9 @@ export default function FlashcardPage() {
             ): deck.length > 0 ? (
               deck.map((card) => (
                 <div className="list-flashcard" key={card.id}>
-                  <div className="card-flip-container">
-                    <div className="card-content">
-                      <div className="card-face card-front">{card.front}</div>
-                      <div className="card-face card-back">{card.back}</div>
-                    </div>
+                  <div className="card-content">
+                    <div className="card-face card-front">{card.front}</div>
+                    <div className="card-face card-back">{card.back}</div>
                   </div>
                   <button 
                   className="delete-button" 
@@ -107,31 +104,36 @@ export default function FlashcardPage() {
             )}
         </div>
 
-        <form className="flashcard-form" onSubmit={createCard}>
-          <div className="form-group">
-            <label htmlFor="front">Front:</label>
-            <input
-              type="text"
-              id="front"
-              value={front}
-              onChange={(e) => setFront(e.target.value)}
-              required
-              placeholder="Enter front text"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="back">Back:</label>
-            <input
-              type="text"
-              id="back"
-              value={back}
-              onChange={(e) => setBack(e.target.value)}
-              required
-              placeholder="Enter back text"
-            />
-          </div>
-          <button type="submit" className="add-button">Add Flashcard</button>
-        </form>
+        <div className="right-column">
+          <form className="flashcard-form" onSubmit={createCard}>
+            <div className="form-group">
+              <label htmlFor="front">Front:</label>
+              <input
+                type="text"
+                id="front"
+                value={front}
+                onChange={(e) => setFront(e.target.value)}
+                required
+                placeholder="Enter front text"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="back">Back:</label>
+              <input
+                type="text"
+                id="back"
+                value={back}
+                onChange={(e) => setBack(e.target.value)}
+                required
+                placeholder="Enter back text"
+              />
+            </div>
+            <button type="submit" className="add-button">Add Flashcard</button>
+          </form>
+          <Link className="upload-card-button" to={`/deck/${deckName}/cards/upload/${currentId}`}>
+              <div>Upload File</div>
+          </Link>
+        </div>
       </div>
     </div>
   )

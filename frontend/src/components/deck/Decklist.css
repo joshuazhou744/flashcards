@@ -34,6 +34,7 @@ body {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(4, 1fr); 
+    max-width: 50vw;
     overflow-y: auto;
     max-height: 75vh;
     border: outset, rgb(225, 43, 225), 5px;

@@ -5,6 +5,7 @@ import DeckPage from "./components/deck/DeckPage"
 import "./App.css"
 import FlashcardList from "./components/flashcard/FlashcardList"
 import FlashcardPage from "./components/flashcard/FlashcardPage"
+import UploadDeck from "./components/flashcard/UploadDeck"
 
 function App() {  
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function App() {
         <Route path="/deck/:deckName" element={<DeckPage />} />
         <Route path="/deck/:deckName/practice" element={<FlashcardList />}/>
         <Route path="/deck/:deckName/cards" element={<FlashcardPage />}/>
+        <Route path="/deck/:deckName/cards/upload/:currentId" element={<UploadDeck />}/>
       </Routes>
     </>
   )

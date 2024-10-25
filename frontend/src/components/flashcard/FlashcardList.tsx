@@ -26,7 +26,7 @@ export default function FlashcardList() {
     if (deck.length <= 10) {
       return shuffle(deck)
     } else {
-      let newArray = shuffle(deck).slice(0,10)
+      const newArray = shuffle(deck).slice(0,10)
       return newArray
     }
   }
@@ -35,7 +35,7 @@ export default function FlashcardList() {
     let currentIndex = array.length
 
     while (currentIndex != 0) {
-      let random = Math.floor(Math.random() * currentIndex)
+      const random = Math.floor(Math.random() * currentIndex)
       currentIndex--;
 
       [array[currentIndex], array[random]] = [array[random], array[currentIndex]]

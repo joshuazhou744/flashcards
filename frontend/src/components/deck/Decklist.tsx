@@ -71,7 +71,7 @@ export default function Decklist() {
             </Link>
           ))
         ) : (
-          <p>No deck available, please create one</p>
+          <div>No decks available</div>
         )}
       </div>
     </div>

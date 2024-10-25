@@ -1,0 +1,40 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.upload-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.upload-files {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+  
+.submit, .custom-label, .clear-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clear-button {
+    background-color: rgb(252, 80, 80);
+}
+.clear-button:hover {
+    background-color: rgb(210, 14, 14);
+}
+
+.submit:hover, .custom-label:hover {
+    background-color: #015ec2;
+}

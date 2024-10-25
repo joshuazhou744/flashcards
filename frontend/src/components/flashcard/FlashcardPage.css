@@ -34,6 +34,11 @@ body {
     flex: 3; /* Takes up 3 parts of the flex container */
 }
 
+.card-front, .card-back {
+    text-align: center;
+    padding: 5px;
+}
+
 /* Individual Flashcard */
 .list-flashcard {
     display: flex;
@@ -87,7 +92,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1; /* Takes up 1 part of the flex container */
     max-width: 300px; /* Fixed width for the form */
-    height: fit-content; /* Adjust height based on content */
+    max-height: fit-content;
 }
 
 .flashcard-form .form-group {
@@ -131,4 +136,29 @@ body {
 
 .add-button:hover {
     background-color: #218838;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.upload-card-button {
+    background-color: #7ec9e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    transition: background-color 0.3s;
+}
+
+.upload-card-button:hover {
+    background-color: #49bbe1;
 }
